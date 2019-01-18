@@ -1,7 +1,5 @@
 package Problems
 
-import jdk.jshell.spi.ExecutionControl.NotImplementedException
-
 object Lists {
   def last[A](xs: List[A]): A = xs match {
     case h::Nil => h
@@ -98,6 +96,60 @@ object Lists {
   }
 
   def slice[A](start: Int, end: Int, xs: List[A]): List[A] = {
+    (start, end, xs) match {
+      case (_,_,Nil) => Nil
+      case (0, end, xs) => xs.head::slice(0, end-1, xs.tail)
+      case (start, end, xs) => slice(start-1, end-1, xs.tail)
+    }
+  }
+
+  def rotate[A](n: Int, xs: List[A]): List[A] = {
+    (n, xs) match {
+      case (0, ls) => ls
+      case (i, ls) => {
+        if (i > 0) rotate(i-1, ls.tail:+ls.head)
+        else rotate(xs.length + i, xs)
+      }
+    }
+  }
+
+  def removeAt[A](n: Int, xs: List[A]): (List[A], A) = (n, xs) match {
+    case (0, ls) => (ls.tail, ls.head)
+    case (i, ls) => {
+      val (l, v) = removeAt(n-1, xs.tail)
+      (xs.head::l, v)
+    }
+  }
+
+  def insertAt[A](e: A, n: Int, xs: List[A]): List[A] = (e, n, xs) match {
+    case (e, 0, ls) => e::ls
+    case (e, i, ls) => {
+      val t = insertAt(e, i-1, ls.tail)
+      ls.head::t
+    }
+  }
+
+  def range(s: Int, e: Int): List[Int] = (s,e) match {
+    case (i, j) => {
+      if (j < i) Nil
+      else i::range(i+1, j)
+    }
+  }
+
+  def randomSelect[A](i: Int, xs: List[A]): List[Int] = {
     throw new NotImplementedException("")
   }
+
+  def lotto(n: Int, e: Int): List[Int] = {
+    throw new NotImplementedException("")
+  }
+
+  def randomPermute[A](ls: List[A]): List[A] ={
+    throw new NotImplementedException("")
+  }
+
+  def combinations[A](l: Int, ls: List[A]): List[A] ={
+    throw new NotImplementedException("")
+  }
+
 }
