@@ -137,19 +137,19 @@ object Lists {
   }
 
   def randomSelect[A](i: Int, xs: List[A]): List[Int] = {
-    throw new NotImplementedException("")
+    throw new NotImplementedError()
   }
 
   def lotto(n: Int, e: Int): List[Int] = {
-    throw new NotImplementedException("")
+    throw new NotImplementedError()
   }
 
   def randomPermute[A](ls: List[A]): List[A] ={
-    throw new NotImplementedException("")
+    throw new NotImplementedError("")
   }
 
   def combinations[A](l: Int, ls: List[A]): List[A] ={
-    throw new NotImplementedException("")
+    throw new NotImplementedError("")
   }
 
 }

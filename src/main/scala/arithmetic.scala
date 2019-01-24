@@ -10,6 +10,17 @@ package arithmetic {
       start % _ != 0
     })
 
+    def isCoprimeTo(m: Int): Boolean = gcd(start, m) == 1
+
+    def totient: Int = (1 to start) count { start.isCoprimeTo(_)}
+
+    def primeFactors: List[Int] = {
+      throw new NotImplementedError("")
+    }
+
+    def primeFactorMultiplicity: List[(Int, Int)] ={
+      throw new NotImplementedError("")
+    }
   }
 
   object S99Int {
@@ -20,9 +31,12 @@ package arithmetic {
       _.isPrime
     })
 
-    def gcd(n1: Int, n2: Int): Int = 1
+    def gcd(n1: Int, n2: Int): Int = (n1, n2) match {
+      case (0, n) => n
+      case (n, m) => gcd(m%n, n)
+    }
 
-
+    def listPrimesinRange(r: Range): List[Int] = primes dropWhile(_ > r.start) takeWhile(_ < r.last) toList
   }
 
 }
