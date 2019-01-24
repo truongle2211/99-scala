@@ -50,7 +50,7 @@ package logic {
       }
     }
 
-    def huffman[A](ls: List[(A, Int)]): List[A,A] = {
+    def huffman[A](ls: List[(A, Int)]): List[(A,String)] = {
       throw new NotImplementedError("")
     }
   }
